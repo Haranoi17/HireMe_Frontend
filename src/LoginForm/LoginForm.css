@@ -1,0 +1,26 @@
+.loginForm
+{
+    font-family: 'Public Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-size: xx-large;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+.loginForm *
+{
+    margin-top: 5px;
+}
+
+.loginForm input
+{
+    width: min-content;
+}

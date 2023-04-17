@@ -1,0 +1,55 @@
+@import url('https://fonts.cdnfonts.com/css/public-sans');
+
+.Navbar
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(61, 61, 61);
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-size: cover;
+}
+
+.Buttons
+{
+    display: flex;
+    justify-content: flex-end;
+    
+    margin-right: 10px;
+
+    justify-content: space-around;
+}
+
+.Navbar button
+{
+    font-family: 'Public Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-size: xx-large;
+    
+    text-align: center;
+    color: white;
+    border:none;
+    background-color: inherit;
+    border-radius: 20px;
+}
+
+.Navbar button:hover
+{
+    color:rgb(0, 157, 168);
+}
+
+.Logo
+{
+    font-family: 'Public Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: xx-large;
+    color: white;
+
+    margin-left: 10px;
+}
+

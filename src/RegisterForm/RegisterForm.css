@@ -1,0 +1,39 @@
+.registerForm
+{
+    font-family: 'Public Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-size: xx-large;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+.registerForm *
+{
+    margin-top: 5px;
+}
+
+.registerForm input
+{
+    width: min-content;
+}
+
+.response
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.errorMessage
+{
+    text-align: left;
+    font-size: medium;
+    color: red;
+}
