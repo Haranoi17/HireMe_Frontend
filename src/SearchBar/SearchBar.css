@@ -1,0 +1,16 @@
+.searchBar{
+    width: 80%;
+    max-width: 500px;
+
+    padding: 10px;
+
+    border-color: #191A19;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 5px;
+}
+
+.searchBar:focus{
+    border-color: #4E9F3D;
+    outline: none;
+}

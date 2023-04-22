@@ -1,0 +1,53 @@
+.LandingPage{
+    display: flex;
+    flex-direction: column;
+}
+
+.MainSection{
+    display: flex;
+    justify-content: center;
+
+}
+
+.BackgroundImage{
+    position: absolute;
+    display: block;
+    background-image: url("https://coolbackgrounds.io/images/backgrounds/black/black-radial-gradient-bb05ed79.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.MainSectionContent{
+    margin-top: 10vh;
+    z-index: 1;
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    align-items: center;
+}
+
+.Incentive{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.MainSection button{
+    color:white;
+
+    font-size: xx-large;
+    width: 250px;
+    height: 60px;
+
+    background-color: #4E9F3D;
+    border: none;
+    border-radius: 10px;
+}
+
+.MainSection .link{
+    margin-top: 100px;
+}

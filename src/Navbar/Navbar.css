@@ -2,14 +2,19 @@
 
 .Navbar
 {
+    z-index: 2;
+    position: sticky;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(61, 61, 61);
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+
     background-size: cover;
+
+    background-color: #191A19;
+
+    min-height: 70px;
 }
 
 .Buttons
@@ -31,7 +36,7 @@
     font-size: xx-large;
     
     text-align: center;
-    color: white;
+    color: #F6F1F1;
     border:none;
     background-color: inherit;
     border-radius: 20px;
@@ -39,17 +44,40 @@
 
 .Navbar button:hover
 {
-    color:rgb(0, 157, 168);
+    color:#4E9F3D;
 }
 
 .Logo
 {
-    font-family: 'Public Sans', sans-serif;
+    display: flex;
+    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: xx-large;
-    color: white;
 
-    margin-left: 10px;
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    pointer-events: none;
 }
 
+.Logo p{
+    font-family: 'Titan One', cursive;
+}
+
+.LogoMe{
+    color: #4E9F3D;
+}
+
+.Navbar a{
+    text-decoration: none;
+}
+
+.Logo *{
+    margin: 0px;
+}
+
+.LandingPage h1{
+    z-index: 1;
+}

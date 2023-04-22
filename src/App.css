@@ -1,7 +1,19 @@
 .App
 {
-  background-color: rgb(28, 28, 28);
+  color: white;
   height: 100vh;
   background-size: cover;
   overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  overflow: hidden;
 }
+
+main{
+  width: 100%;
+  overflow-y: auto;
+}
+

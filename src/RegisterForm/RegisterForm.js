@@ -1,33 +1,30 @@
 import './RegisterForm.css'
 import { useState } from 'react'
+import axios from 'axios'
+import {getRegisterEndpoint, registerUser} from '../ApiRoutes'
 
-export default function LoginForm() {
-    const [serverResponse, setServerResponse] = useState('');
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+export default function RegisterForm() {
+    const [serverResponse, setServerResponse] = useState('')
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
 
     const sendRegisterRequest = () => {
-        fetch('https://localhost:7046/api/Account/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-                name: userName,
-                email: email,
-                password: password
-            })
+        const registerCredentials = JSON.stringify({
+            name: userName,
+            email: email,
+            password: password
         })
-            .then(response => response.json())
-            .then(data => setServerResponse(data.map((item)=>{return <div className='errorMessage'>{item.description}</div>})))
-            .catch(error => console.error(error));
-    };
+        
+        registerUser(registerCredentials)
+        .then(response => response.json())
+        .then(data => setServerResponse(data.map((item)=>{return <div className='errorMessage'>{item.description}</div>})))
+        .catch(error => console.error(error.data))
+    }
 
-    const updateUserName = (event) => { setUserName(event.target.value) };
-    const updatePassword = (event) => { setPassword(event.target.value) };
-    const updateEmail = (event) => { setEmail(event.target.value) };
+    const updateUserName = (event) => { setUserName(event.target.value) }
+    const updatePassword = (event) => { setPassword(event.target.value) }
+    const updateEmail = (event) => { setEmail(event.target.value) }
 
     return (
         <div className='registerForm'>

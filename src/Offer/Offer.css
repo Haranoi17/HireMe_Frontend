@@ -1,0 +1,17 @@
+.offerBox{
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+    margin: 20px;
+
+    border-radius: 5px;
+}
+
+.offerBox img{
+    border-radius: 5px;
+}
+
+.title{
+    margin: 0px;
+}

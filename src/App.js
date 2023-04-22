@@ -4,6 +4,9 @@ import RegisterForm from './RegisterForm/RegisterForm'
 
 import Navbar from './Navbar/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import OfferSearcher from './OfferSearcher/OfferSearcher';
+import LandingPage from './LandingPage/LandingPage';
+import OfferPage from './OfferPage/OfferPage';
 
 export default function App() {
   return (
@@ -12,9 +15,11 @@ export default function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route index element={<div>This is Index</div>} />
-            <Route path='login' element={<LoginForm/>} />
-            <Route path='register' element={<RegisterForm/>}/>
+            <Route index element={<LandingPage />} />
+            <Route path='login' element={<LoginForm />} />
+            <Route path='register' element={<RegisterForm />} />
+            <Route path='search' element={<OfferSearcher />} />
+            <Route path='search/offerPage' element={<OfferPage />} />
           </Routes>
         </main>
       </BrowserRouter>
