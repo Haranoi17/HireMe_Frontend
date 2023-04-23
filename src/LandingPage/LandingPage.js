@@ -17,12 +17,7 @@ export default function LandingPage(){
                         <button>Hire</button>
                     </Link>
                 </div>
-
-                <div className='ExplanationSection'>
-
-                </div>
             </div>
-            <div className='verticalSpace'></div>
         </div>
     )
 }
