@@ -5,8 +5,7 @@
     -moz-osx-font-smoothing: grayscale;
 
     font-size: xx-large;
-    color: white;
-
+    color: black;
     display: flex;
     flex-direction: column;
     

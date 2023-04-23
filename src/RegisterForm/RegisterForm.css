@@ -18,22 +18,10 @@
 .registerForm *
 {
     margin-top: 5px;
+    color: black;
 }
 
 .registerForm input
 {
     width: min-content;
-}
-
-.response
-{
-    display: flex;
-    flex-direction: column;
-}
-
-.errorMessage
-{
-    text-align: left;
-    font-size: medium;
-    color: red;
 }

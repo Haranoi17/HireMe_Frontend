@@ -13,9 +13,9 @@ export default function OfferSearcher() {
 
     const resultsToOfferTiles = () => {
         setOffers(searchResult.map(receivedOffer => {
-            <Link to="offerPage" state={{ receivedOffer }}>
+            return (<Link to="offerPage" state={{ receivedOffer }}>
                 <OfferTile key={receivedOffer} imageUrl={receivedOffer.imageUrl} title={receivedOffer.title} />
-            </Link>
+            </Link>)
         })
         );
     }

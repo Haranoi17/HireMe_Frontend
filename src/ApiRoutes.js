@@ -1,29 +1,37 @@
 import axios from "axios"
-import getMockOffers from "./MockData/MockOffers"
 
-const loginEndpoint = "/Account/login"
-const registerEndpoint = "/Account/register"
+const loginEndpoint = "Account/login"
+const logoutEndpoint = "Account/logout"
+const registerEndpoint = "Account/register"
+const getLoggedUserEndpoint = "Account/user"
+const checkCookieEndpoint = "Account/checkCookie"
 
-const postConfig = {
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}
-
-export const api = axios.create({
-    baseUrl: 'https://localhost:7046/api'
-})
+const api = axios.create()
+api.defaults.baseURL = 'https://localhost:7046/api/'
+api.defaults.headers = {'Content-Type': 'application/json'}
+api.defaults.withCredentials = true;
 
 export const loginUser = async (loginCredentials) => {
-    const response = await api.post(loginEndpoint, loginCredentials, postConfig)
+    const response = await api.post(loginEndpoint, loginCredentials)
     return response.data
+}
+
+export const logoutUser = async () => {
+    const response = await api.post(logoutEndpoint);
+    return response.data;
 }
 
 export const registerUser = async (registerCredentials) => {
-    const response = await api.post(registerEndpoint, registerCredentials, postConfig)
+    const response = await api.post(registerEndpoint, registerCredentials)
     return response.data
 }
 
-export const getOffers = async () => {
-    return getMockOffers();
+export const checkIfLoggedIn = async()=>{
+    const response = await api.post(checkCookieEndpoint)
+    return response.data;
+}
+
+export const getLoggedUser = async () => {
+    const response = await api.get(getLoggedUserEndpoint)
+    return response.data;
 }

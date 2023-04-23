@@ -1,12 +1,16 @@
 import axios from 'axios'
 import './LoginForm.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { loginUser } from '../ApiRoutes'
+import ServerMessagePrinter from '../ServerMessagePrinters/ServerMessagePrinter'
+import SuccessServerMessage from '../ServerMessagePrinters/SuccessServerMessage'
+import ErrorServerMessage from '../ServerMessagePrinters/ErrorServerMessage'
 
-export default function LoginForm() {
+export default function LoginForm({ setIsUserLoggedIn }) {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [serverResponse, setServerResponse] = useState('')
+
 
     const sendLoginRequest = () => {
         const loginCredentials = JSON.stringify({
@@ -15,9 +19,12 @@ export default function LoginForm() {
         })
 
         loginUser(loginCredentials)
-        .then(response => response.json())
-        .then(data => setServerResponse(data.value))
-        .catch(error => setServerResponse("Wrong credentials!"))
+            .then(response => {
+                setServerResponse(<ServerMessagePrinter messages={[<SuccessServerMessage text={response.value} />]} />)
+                const isLoggedIn = response.value == 'User logged in';
+                setIsUserLoggedIn(isLoggedIn);
+            })
+            .catch(error => setServerResponse(<ServerMessagePrinter messages={[<ErrorServerMessage text={error.response.data.value} />]} />))
     }
 
     const updateUserName = (event) => { setUserName(event.target.value) }
@@ -29,7 +36,7 @@ export default function LoginForm() {
             <input type="password" placeholder="password" value={password} onChange={updatePassword}></input>
             <button onClick={sendLoginRequest} >login</button>
 
-            <p>{serverResponse}</p>
+            <div className='ServerResponse'>{serverResponse}</div>
         </div>
     );
 }

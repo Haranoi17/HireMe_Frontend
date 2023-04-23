@@ -1,7 +1,9 @@
 import './RegisterForm.css'
 import { useState } from 'react'
-import axios from 'axios'
-import {getRegisterEndpoint, registerUser} from '../ApiRoutes'
+import { registerUser } from '../ApiRoutes'
+import ServerMessagePrinter from '../ServerMessagePrinters/ServerMessagePrinter'
+import SuccessServerMessage from '../ServerMessagePrinters/SuccessServerMessage'
+import ErrorServerMessage from '../ServerMessagePrinters/ErrorServerMessage'
 
 export default function RegisterForm() {
     const [serverResponse, setServerResponse] = useState('')
@@ -15,11 +17,9 @@ export default function RegisterForm() {
             email: email,
             password: password
         })
-        
         registerUser(registerCredentials)
-        .then(response => response.json())
-        .then(data => setServerResponse(data.map((item)=>{return <div className='errorMessage'>{item.description}</div>})))
-        .catch(error => console.error(error.data))
+            .then(response => setServerResponse(<ServerMessagePrinter messages={[<SuccessServerMessage text={response.value}/>]}/>))
+            .catch(error => setServerResponse(<ServerMessagePrinter messages={error.response.data.value.map((item)=><ErrorServerMessage text={item.description}/>)}/>))
     }
 
     const updateUserName = (event) => { setUserName(event.target.value) }
@@ -34,7 +34,7 @@ export default function RegisterForm() {
 
             <button onClick={sendRegisterRequest}>Register</button>
 
-            <div className='response'>{serverResponse}</div>
+            <div className='ServerResponse'>{serverResponse}</div>
         </div>
     );
 }
