@@ -1,10 +1,10 @@
-.offer{
+.offer {
     padding: 20px;
     display: flex;
     flex-direction: column;
     color: black;
 }
 
-.offer img{
+.offer img {
     max-width: 700px;
 }

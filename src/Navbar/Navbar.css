@@ -1,7 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/public-sans');
 
-.Navbar
-{
+.Navbar {
     z-index: 2;
     position: sticky;
     top: 0px;
@@ -17,40 +16,36 @@
     min-height: 70px;
 }
 
-.Buttons
-{
+.Buttons {
     display: flex;
     justify-content: flex-end;
-    
+
     margin-right: 10px;
 
     justify-content: space-around;
 }
 
-.Navbar button
-{
+.Navbar button {
     font-family: 'Public Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
     font-size: xx-large;
-    
+
     text-align: center;
     color: #F6F1F1;
-    border:none;
+    border: none;
     background-color: inherit;
     border-radius: 20px;
 }
 
-.Navbar button:hover
-{
-    color:#4E9F3D;
+.Navbar button:hover {
+    color: #4E9F3D;
 }
 
-.Logo
-{
+.Logo {
     display: flex;
-    
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: xx-large;
@@ -62,22 +57,22 @@
     pointer-events: none;
 }
 
-.Logo p{
+.Logo p {
     font-family: 'Titan One', cursive;
 }
 
-.LogoMe{
+.LogoMe {
     color: #4E9F3D;
 }
 
-.Navbar a{
+.Navbar a {
     text-decoration: none;
 }
 
-.Logo *{
+.Logo * {
     margin: 0px;
 }
 
-.LandingPage h1{
+.LandingPage h1 {
     z-index: 1;
 }

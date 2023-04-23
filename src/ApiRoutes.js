@@ -24,6 +24,6 @@ export const registerUser = async (registerCredentials) => {
     return response.data
 }
 
-export const getOffers = async()=>{
+export const getOffers = async () => {
     return getMockOffers();
 }

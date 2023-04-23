@@ -5,7 +5,7 @@ export default function SearchBar({ offers, setSearchResult }) {
     const [searchInput, setSearchInput] = useState('')
 
     const updateInput = (event) => { setSearchInput(event.target.value) }
-    
+
     const updateResults = () => {
         if (!searchInput) { return setSearchResult(offers) }
 

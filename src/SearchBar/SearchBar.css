@@ -1,4 +1,4 @@
-.searchBar{
+.searchBar {
     width: 80%;
     max-width: 500px;
 
@@ -10,7 +10,7 @@
     border-radius: 5px;
 }
 
-.searchBar:focus{
+.searchBar:focus {
     border-color: #4E9F3D;
     outline: none;
 }

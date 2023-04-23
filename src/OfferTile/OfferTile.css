@@ -1,4 +1,4 @@
-.offerBox{
+.offerBox {
     color: black;
     display: flex;
     flex-direction: column;
@@ -8,10 +8,10 @@
     border-radius: 5px;
 }
 
-.offerBox img{
+.offerBox img {
     border-radius: 5px;
 }
 
-.title{
+.title {
     margin: 0px;
 }
