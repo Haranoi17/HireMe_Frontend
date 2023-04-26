@@ -5,6 +5,7 @@ import SearchBar from "../SearchBar/SearchBar"
 import OfferTile from "../OfferTile/OfferTile"
 
 import getMockOffers from "../MockData/MockOffers"
+import getImageIfNoSet from '../Globals'
 
 
 export default function OfferSearcher() {
@@ -12,10 +13,12 @@ export default function OfferSearcher() {
     const [offers, setOffers] = useState([])
 
     const resultsToOfferTiles = () => {
-        setOffers(searchResult.map(receivedOffer => {
-            return (<Link to="offerPage" state={{ receivedOffer }}>
-                <OfferTile key={receivedOffer} imageUrl={receivedOffer.imageUrl} title={receivedOffer.title} />
-            </Link>)
+        setOffers(searchResult.map(offer => {
+            return (
+                <Link to="offerPage" state={{ offer }}>
+                    <OfferTile key={offer} imageUrl={getImageIfNoSet(offer.imageUrl)} title={offer.title} />
+                </Link>
+            )
         })
         );
     }

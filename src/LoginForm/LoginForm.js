@@ -1,7 +1,7 @@
 import axios from 'axios'
 import './LoginForm.css'
 import { useEffect, useState } from 'react'
-import { loginUser } from '../ApiRoutes'
+import { checkIfLoggedIn, loginUser } from '../ApiRoutes'
 import ServerMessagePrinter from '../ServerMessagePrinters/ServerMessagePrinter'
 import SuccessServerMessage from '../ServerMessagePrinters/SuccessServerMessage'
 import ErrorServerMessage from '../ServerMessagePrinters/ErrorServerMessage'
@@ -19,16 +19,18 @@ export default function LoginForm({ setIsUserLoggedIn }) {
         })
 
         loginUser(loginCredentials)
-            .then(response => {
-                setServerResponse(<ServerMessagePrinter messages={[<SuccessServerMessage text={response.value} />]} />)
-                const isLoggedIn = response.value == 'User logged in';
-                setIsUserLoggedIn(isLoggedIn);
-            })
+            .then(response => setServerResponse(<ServerMessagePrinter messages={[<SuccessServerMessage text={response.value} />]} />))
             .catch(error => setServerResponse(<ServerMessagePrinter messages={[<ErrorServerMessage text={error.response.data.value} />]} />))
     }
 
     const updateUserName = (event) => { setUserName(event.target.value) }
     const updatePassword = (event) => { setPassword(event.target.value) }
+
+    useEffect(()=>{
+        checkIfLoggedIn()
+        .then(response => setIsUserLoggedIn(response.value))
+        .catch(error => console.log(error))
+    }, [serverResponse])
 
     return (
         <div className='loginForm'>
