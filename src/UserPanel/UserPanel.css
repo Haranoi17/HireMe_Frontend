@@ -1,3 +1,30 @@
 .UserPanel {
     color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.UserOffers {
+    display: flex;
+    overflow-x: scroll;
+    width: 90%;
+}
+
+.UserView {
+    display: flex;
+    flex-direction: column;
+}
+
+.UserOffersSegment{
+    display: flex;
+    flex-direction: column;
+}
+
+.UserView img {
+    width: 150px;
+    border-radius: 0px;
+    border-width: 10px;
+    border-color: black;
+    border-style: solid;
 }

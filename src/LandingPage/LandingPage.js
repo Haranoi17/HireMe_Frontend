@@ -1,10 +1,11 @@
 import './LandingPage.css'
 import './LandingPageAnimations.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function LandingPage(){
+export default function LandingPage() {
+    const navigate = useNavigate()
 
-    return(
+    return (
         <div className='LandingPage'>
             <div className='MainSection'>
                 <div className='BackgroundImage'></div>
@@ -13,9 +14,7 @@ export default function LandingPage(){
                         <h1>Delegate work</h1>
                         <p>Find competent people willing to help you in your day to day tasks</p>
                     </div>
-                    <Link className='link' to='/search'>
-                        <button>Hire</button>
-                    </Link>
+                    <button onClick={() => navigate('search')}>Hire</button>
                 </div>
             </div>
         </div>

@@ -1,35 +1,43 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../ApiRoutes";
+import { getDefaultAvatarIfNotSet } from "../Globals";
 
 export function LogoutButton({ setIsLoggedIn }) {
+    const navigate = useNavigate()
+
     return (
         <button onClick={() => {
             logoutUser()
             setIsLoggedIn(false)
+            navigate('/')
         }}>logout</button>
     );
 }
 
 export function LoginButton() {
+    const navigate = useNavigate()
+
     return (
-        <Link to='login'>
-            <button>login</button>
-        </Link>
+        <button onClick={() => navigate('login')}>login</button>
     );
 }
 
 export function RegisterButton() {
+    const navigate = useNavigate()
+
     return (
-        <Link to='register'>
-            <button>register</button>
-        </Link>
+        <button onClick={() => navigate('register')}>register</button>
     );
 }
 
-export function UserPanelButton({ userName }) {
+export function UserPanelButton({ user }) {
+    const navigate = useNavigate()
+
+    const { avatarUrl, name } = user;
     return (
-        <Link to='userPanel'>
-            <button>{userName}</button>
-        </Link>
+        <div className="UserButtonWithAvatar">
+            <img className="UserAvatar" alt='' src={getDefaultAvatarIfNotSet(avatarUrl)}/>
+            <button onClick={() => navigate('userPanel')}>{name}</button>
+        </div>
     );
 }

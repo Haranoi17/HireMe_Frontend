@@ -1,9 +1,19 @@
+import { useNavigate } from 'react-router';
+import { getDefaultOfferImageIfNotSet } from '../Globals';
 import './OfferTile.css'
 
-export default function OfferTile({ imageUrl, title }) {
+export default function OfferTile({ offer }) {
+    const navigate = useNavigate()
+
+    const { title, imageUrl, prize } = offer
+
     return (
-        <div className='offerBox'>
-            <img src={imageUrl} />
-            <p className='title'>{title}</p>
-        </div>);
+        <button onClick={() => navigate('/offerPage', { state: { offer: offer } })}>
+            <div className='offerBox'>
+                <img alt='' src={getDefaultOfferImageIfNotSet(imageUrl)} />
+                <p className='title'>{title}</p>
+                <p>{prize ? `Prize: ${prize}$` : "Free"}</p>
+            </div>
+        </button>
+    );
 }

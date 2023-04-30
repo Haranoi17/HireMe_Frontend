@@ -1,39 +1,46 @@
 import { useEffect, useState } from 'react'
 import './UserPanel.css'
-import getMockOffers from '../MockData/MockOffers'
 import OfferTile from '../OfferTile/OfferTile'
-import getImageIfNoSet from '../Globals'
-import { createOffer, getLoggedInUserOffers } from '../ApiRoutes'
+import { getLoggedInUserOffers } from '../ApiRoutes'
+import CreateOfferPopup from '../CreateOfferPopup/CreateOfferPopup'
+import SetAvatarImagePopup from '../SetAvatarImagePopup/SetAvatarImagePopup'
 
-export default function UserPanel({userAccountInfo}) {
-    const [userOffersTiles, setUserOffersTiles ] = useState()
+export default function UserPanel({ userAccount }) {
+    const [userOffersTiles, setUserOffersTiles] = useState()
+    const [shouldShowSetAvatarPopup, setShouldShowSetAvatarPopup] = useState(false)
+    const [shouldShowOfferCreationPopup, setShouldShowOfferCreationPopup] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         getLoggedInUserOffers()
-        .then(response => setUserOffersTiles(response.map(offer=><OfferTile imageUrl={getImageIfNoSet(offer.imageUrl)} title={offer.title}/>)))
-        .catch(error=>console.log(error))
+            .then(response => setUserOffersTiles(response.map(OfferWithUser => <OfferTile key={OfferWithUser.offer.id} offer={OfferWithUser.offer} />)))
+            .catch(error => console.log(error))
     }, [])
 
-    const mockOfferCreation = ()=>{
-        const mockCreateOfferDto =JSON.stringify({
-            title:"Mock offer",
-            imageUrl:"https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJhbmRvbXxlbnwwfHwwfHw%3D&w=1000&q=80",
-            description: "I will do orange blue for you",
-            prize: 25
-        } )
-
-        createOffer(mockCreateOfferDto)
-        .then(response=>console.log(response))
-        .catch(error=>console.log(error))
+    const showCreateOfferPopup = () => {
+        setShouldShowOfferCreationPopup(true)
+    }
+    const showSetAvatarPopup = () => {
+        setShouldShowSetAvatarPopup(true)
     }
 
     return (
         <div className='UserPanel'>
-            <h1>{userAccountInfo.name}</h1>
-            <div>
-                {userOffersTiles}
+            <div className='UserView'>
+                <img alt='' src={userAccount.avatarUrl} onClick={showSetAvatarPopup}/>
+                <p>{userAccount.name}</p>
             </div>
-            <button onClick={mockOfferCreation}></button>
+
+            <button onClick={showCreateOfferPopup}>Create new offer</button>
+            <button onClick={showSetAvatarPopup}>set avatar</button>
+            <CreateOfferPopup shouldShow={shouldShowOfferCreationPopup} setShouldShow={setShouldShowOfferCreationPopup} />
+            <SetAvatarImagePopup shouldShow={shouldShowSetAvatarPopup} setShouldShow={setShouldShowSetAvatarPopup} userAccount={userAccount} />
+
+            <div className='UserOffersSegment'>
+                <p>Your offers</p>
+                <div className='UserOffers'>
+                    {userOffersTiles}
+                </div>
+            </div>
         </div>
     )
 }

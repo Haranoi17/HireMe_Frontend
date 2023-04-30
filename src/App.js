@@ -8,7 +8,7 @@ import { LoginButton, RegisterButton, LogoutButton, UserPanelButton } from './Na
 import LoginForm from './LoginForm/LoginForm';
 import RegisterForm from './RegisterForm/RegisterForm'
 import Navbar from './Navbar/Navbar';
-import OfferSearcher from './OfferSearcher/OfferSearcher';
+import OfferBrowser from './OfferBrowser/OfferBrowser';
 import LandingPage from './LandingPage/LandingPage';
 import OfferPage from './OfferPage/OfferPage';
 import UserPanel from './UserPanel/UserPanel';
@@ -16,7 +16,7 @@ import HireMeLogo from './HireMeLogo/HireMeLogo';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userAccountInfo, setUserAccountInfo] = useState({ name: null });
+  const [userAccount, setUserAccount] = useState({});
   const [userPannelButton, setUserPannelButton] = useState()
 
   useEffect(() => {
@@ -26,14 +26,16 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    getLoggedUser()
-      .then(response => setUserAccountInfo({ name: response.value }))
-      .catch(error => console.log(error))
+    if (isLoggedIn) {
+      getLoggedUser()
+        .then(response => setUserAccount(response))
+        .catch(error => console.log(error))
+    }
   }, [isLoggedIn])
 
   useEffect(() => {
-    setUserPannelButton(<UserPanelButton userName={userAccountInfo.name} />)
-  }, [userAccountInfo])
+    setUserPannelButton(<UserPanelButton user={userAccount} />)
+  }, [userAccount])
 
   return (
     <div className="App">
@@ -53,9 +55,9 @@ export default function App() {
             <Route index element={<LandingPage />} />
             <Route path='login' element={<LoginForm setIsUserLoggedIn={setIsLoggedIn} />} />
             <Route path='register' element={<RegisterForm setIsUserLoggedIn={setIsLoggedIn} />} />
-            <Route path='search' element={<OfferSearcher />} />
-            <Route path='search/offerPage' element={<OfferPage />} />
-            <Route path='userPanel' element={<UserPanel userAccountInfo={userAccountInfo} />} />
+            <Route path='search' element={<OfferBrowser />} />
+            <Route path='offerPage' element={<OfferPage />} />
+            <Route path='userPanel' element={<UserPanel userAccount={userAccount} />} />
           </Routes>
         </main>
       </BrowserRouter>

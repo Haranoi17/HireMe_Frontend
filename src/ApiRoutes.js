@@ -6,8 +6,11 @@ const registerEndpoint = "Account/register"
 const getLoggedUserEndpoint = "Account/user"
 const isLoggedInEndpoint = "Account/isLoggedIn"
 
-const createOfferEndpoint = "Offer"
+const updateUserEndpoint = "Account/update"
+
+const createOfferEndpoint = "Offer/create"
 const getUserOfferEndpoint = "Offer"
+const getAllOffersEndpoint = "Offer/all"
 
 const api = axios.create()
 api.defaults.baseURL = 'https://localhost:7046/api/'
@@ -46,5 +49,15 @@ export const createOffer = async (createOfferDto) => {
 
 export const getLoggedInUserOffers = async () => {
     const response = await api.get(getUserOfferEndpoint)
+    return response.data;
+}
+
+export const getAllOffers = async () => {
+    const response = await api.get(getAllOffersEndpoint)
+    return response.data;
+}
+
+export const updateUser = async (updatedUser) => {
+    const response = await api.put(updateUserEndpoint, updatedUser)
     return response.data;
 }

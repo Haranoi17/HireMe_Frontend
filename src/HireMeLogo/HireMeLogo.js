@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 export default function HireMeLogo() {
+    
     return (
     <Link to='/'>
         <button className='Logo'>

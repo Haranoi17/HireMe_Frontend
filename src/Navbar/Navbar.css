@@ -13,7 +13,7 @@
 
     background-color: #191A19;
 
-    min-height: 70px;
+    height: 70px;
 }
 
 .Buttons {
@@ -75,4 +75,13 @@
 
 .LandingPage h1 {
     z-index: 1;
+}
+
+.UserAvatar{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.UserButtonWithAvatar{
+    display: flex;
 }
