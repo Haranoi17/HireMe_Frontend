@@ -1,4 +1,3 @@
-import './SearchBar.css'
 import { useEffect, useState } from "react"
 
 export default function SearchBar({ offers, setSearchResult }) {

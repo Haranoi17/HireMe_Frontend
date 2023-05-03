@@ -1,5 +1,3 @@
-import '../CreateOfferPopup/CreateOfferPopup.css'
-
 export default function CreateOfferPopup({ shouldShow, setShouldShow, content }) {
     const closePopup = () => {
         setShouldShow(false)

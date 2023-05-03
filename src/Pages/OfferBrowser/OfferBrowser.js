@@ -1,10 +1,8 @@
-import './OfferBrowser.css'
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import SearchBar from "../SearchBar/SearchBar"
-import OfferTile from "../OfferTile/OfferTile"
+import SearchBar from "../../SearchBar/SearchBar"
+import OfferTile from "../../OfferTile/OfferTile"
 
-import { getAllOffers } from '../ApiRoutes'
+import { getAllOffers } from '../../ApiRoutes'
 
 
 export default function OfferBrowser() {

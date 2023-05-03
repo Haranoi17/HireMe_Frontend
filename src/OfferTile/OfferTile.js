@@ -1,6 +1,6 @@
+import React from 'react';
 import { useNavigate } from 'react-router';
 import { getDefaultOfferImageIfNotSet } from '../Globals';
-import './OfferTile.css'
 
 export default function OfferTile({ offer }) {
     const navigate = useNavigate()

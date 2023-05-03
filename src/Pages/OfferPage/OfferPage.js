@@ -1,4 +1,3 @@
-import './OfferPage.css'
 import { useLocation } from "react-router";
 
 export default function OfferPage() {

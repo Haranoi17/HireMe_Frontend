@@ -1,4 +1,3 @@
-import './CreateOfferPopup.css'
 import { useState } from "react"
 import { createOffer } from "../ApiRoutes"
 import OfferTile from "../OfferTile/OfferTile"

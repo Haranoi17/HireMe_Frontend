@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './UserPanel.css'
 import OfferTile from '../OfferTile/OfferTile'
 import { getLoggedInUserOffers } from '../ApiRoutes'
 import CreateOfferPopup from '../CreateOfferPopup/CreateOfferPopup'
